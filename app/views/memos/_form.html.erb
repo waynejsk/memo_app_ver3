@@ -1,7 +1,7 @@
 <% if memo.errors.any? %>
   <div class='alert alert-warning'>
     <ul>
-      <%= memo.errors.funll_messages.each do |message| %>
+      <%= memo.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
