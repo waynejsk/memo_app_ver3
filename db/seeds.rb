@@ -8,9 +8,9 @@
 
 
 User.create!(
-  name: 'admin'
-  email: 'admin@email.com'
-  admin: ture
-  password: 'password'
+  name: 'admin',
+  email: 'admin@email.com',
+  admin: ture,
+  password: 'password',
   password_confirmation: 'password'
 )
