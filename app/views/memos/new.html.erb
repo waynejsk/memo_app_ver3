@@ -1,0 +1,7 @@
+<h1>新規作成</h1>
+
+<div class='nav justify-content-end'>
+  <%= link_to '一覧', memos_path, class: 'btn btn-secondary' %>
+</div>
+
+<%= render partial: 'form', locals: {memo: @memo} %>

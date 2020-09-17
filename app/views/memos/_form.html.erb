@@ -1,0 +1,23 @@
+<% if memo.errors.any? %>
+  <div class='alert alert-warning'>
+    <ul>
+      <%= memo.errors.funll_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: memo, local: true do |f| %>
+  <div class='form-group'>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  <div>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
