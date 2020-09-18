@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  get '/top', to: 'static_pages#top'
+  get '/signup', to: 'users#new'
+  resources :users, only: [:create]
+
   get '/login', to: 'session#new'
   post '/login', to: 'session#create'
   delete '/logout', to: 'session#destroy'
+
   namespace :admin do
     resources :users
   end

@@ -11,13 +11,14 @@ class SessionController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, notice: 'ログインしました'
     else
+      flash.now.alert = 'メールアドレスまたはパスワードが間違っています'
       render :new
     end
   end
 
   def destroy
     reset_session
-    redirect_to root_url, notice: 'ログアウトしました'
+    redirect_to top_path, notice: 'ログアウトしました'
   end
 
   private

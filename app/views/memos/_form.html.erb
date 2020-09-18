@@ -1,11 +1,9 @@
 <% if memo.errors.any? %>
-  <div class='alert alert-warning'>
-    <ul>
-      <%= memo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+  <ul class='alert alert-warning'>
+    <%= memo.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <%= form_with model: memo, local: true do |f| %>
