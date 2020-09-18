@@ -2,7 +2,7 @@ class MemosController < ApplicationController
   before_action :set_memo, only: [:show, :edit, :update, :destroy]
   
   def index
-    @memos = current_user.memos
+    @memos = current_user.memos.page(params[:page])
   end
 
   def show
@@ -43,6 +43,6 @@ class MemosController < ApplicationController
     end
     
     def memo_params
-      params.require(:memo).permit(:title, :content)
+      params.require(:memo).permit(:title, :content, :image)
     end
 end

@@ -7,10 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create!(
-  name: 'admin',
-  email: 'admin@email.com',
-  admin: ture,
-  password: 'password',
-  password_confirmation: 'password'
-)
+User.find_or_create_by(email: 'admin@email.com') do |user|
+  user.name = 'admin',
+  user.admin = ture,
+  user.password = 'password',
+  user.password_confirmation = 'password'
+end
+
+(1..50).each do |i|
+  Memo.create!(
+    title: "title#{i}",
+    content: "content#{i}",
+    user_id: 1
+  )
+end
