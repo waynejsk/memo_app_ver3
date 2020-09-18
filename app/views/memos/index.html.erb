@@ -11,7 +11,6 @@
         <th><%= Memo.human_attribute_name(:title) %></th>
         <th><%= Memo.human_attribute_name(:content) %></th>
         <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -19,11 +18,11 @@
         <tr>
           <td><%= memo.title %></td>
           <td><%= memo.content %></td>
-          <td><%= link_to '詳細', memo, class: 'btn btn-secondary' %></td>
-          <td><%= link_to '編集', edit_memo_path(memo), class: 'btn btn-primary' %></td>
           <td>
+            <%= link_to '詳細', memo, class: 'btn btn-secondary mr-3' %>
+            <%= link_to '編集', edit_memo_path(memo), class: 'btn btn-primary mr-3' %>
             <%= link_to '削除', memo, method: :delete, 
-                data: {confirm: "メモ「#{memo.title}」削除します。よろしいですか"}, class: 'btn btn-danger' %>
+                  data: {confirm: "メモ「#{memo.title}」削除します。よろしいですか"}, class: 'btn btn-danger' %>
           </td>
         </tr>
       <% end %>
