@@ -1,6 +1,6 @@
 <% if memo.errors.any? %>
   <ul class='alert alert-warning'>
-    <%= memo.errors.full_messages.each do |message| %>
+    <% memo.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
