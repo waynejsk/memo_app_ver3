@@ -38,8 +38,12 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_url, notice: "ユーザー「#{@user.name}」を削除しました"
+    if @user == current_user
+      redirect_to admin_users_url, alert: 'このユーザーは削除できません'
+    else
+      @user.destroy 
+      redirect_to admin_users_url, notice: "ユーザー「#{@user.name}」を削除しました"
+    end
   end
 
   private
