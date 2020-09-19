@@ -8,7 +8,8 @@ class SessionController < ApplicationController
     user = User.find_by(email: session_params[:email])
 
     if user&.authenticate(session_params[:password])
-      session[:user_id] = user.id
+      log_in user
+      session_params[:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to root_url, notice: 'ログインしました'
     else
       flash.now.alert = 'メールアドレスまたはパスワードが間違っています'
@@ -17,12 +18,12 @@ class SessionController < ApplicationController
   end
 
   def destroy
-    reset_session
+    log_out if logged_in?
     redirect_to top_path, notice: 'ログアウトしました'
   end
 
   private
     def session_params
-      params.require(:session).permit(:email, :password)
+      params.require(:session).permit(:email, :password, :remember_me)
     end
 end
